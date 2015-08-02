@@ -1,0 +1,15 @@
+parameters:
+    ezcontentdecorator.default.default_class: Truffo\eZContentDecoratorBundle\Decorator\ContentDecorator
+    ezcontentdecorator.default_factory: Truffo\eZContentDecoratorBundle\Decorator\ContentDecoratorFactory
+    ezcontentdecorator.pre_content_view_listener.class: Truffo\eZContentDecoratorBundle\EventListener\PreContentViewListener
+
+services:
+    ezcontentdecorator.services.factory:
+        class: %ezcontentdecorator.default_factory%
+        arguments: [@service_container, @ezpublish.config.resolver]
+
+    ezcontentdecorator.pre_content_view_listener:
+        class: %ezcontentdecorator.pre_content_view_listener.class%
+        arguments: [@service_container]
+        tags:
+            - {name: kernel.event_listener, event: ezpublish.pre_content_view, method: onPreContentView}

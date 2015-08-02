@@ -1,0 +1,26 @@
+{
+    "name": "truffo/ezcontentdecorator",
+    "description": "A short description of what your package does",
+    "keywords": ["decorator", "ezpublish"],
+    "homepage": "https://github.com/truffo/ez-content-decorator-bundle",
+    "authors": [
+        {
+            "name": "Sylvain FIX",
+            "homepage": "http://www.mousetic.fr",
+            "email": "sylvain.fix@gmail.com"
+        }
+    ],
+    "license": [
+        "MIT"
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Truffo\\eZContentDecoratorBundle\\": ""
+        }
+    }
+}
