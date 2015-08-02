@@ -33,12 +33,12 @@ class ContentDecoratorFactory
         $this->container = $container;
         $this->configResolver = $configResolver;
         $this->repository = $this->container->get('ezpublish.api.repository');
-        $this->defaultClassName = $this->configResolver->getParameter('default_class', 'contentdecorator');
+        $this->defaultClassName = $this->configResolver->getParameter('default_class', 'ezcontentdecorator');
     }
 
     public function getContentDecorator($location)
     {
-        $mappingEntities = $this->configResolver->getParameter('class_mapping', 'contentdecorator');
+        $mappingEntities = $this->configResolver->getParameter('class_mapping', 'ezcontentdecorator');
         $contentTypeIdentifier = $this->repository->getContentTypeService()
             ->loadContentType($location->contentInfo->contentTypeId)->identifier;
         $className =  (array_key_exists($contentTypeIdentifier, $mappingEntities)) ?
