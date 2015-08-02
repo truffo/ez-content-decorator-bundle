@@ -24,5 +24,6 @@ class eZContentDecoratorExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        $loader->load('ez-content-decorator.yml');
     }
 }

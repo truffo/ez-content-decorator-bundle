@@ -2,7 +2,7 @@
 namespace Truffo\eZContentDecoratorBundle\Pagination\Pagerfanta;
 
 use eZ\Publish\Core\Pagination\Pagerfanta\LocationSearchHitAdapter;
-use Mousetic\Bundle\ContentDecoratorBundle\Decorator\ContentDecoratorFactory;
+use \Truffo\eZContentDecoratorBundle\Decorator\ContentDecoratorFactory;
 use eZ\Publish\API\Repository\Values\Content\LocationQuery;
 use eZ\Publish\API\Repository\SearchService;
 use Pagerfanta\Adapter\AdapterInterface;
@@ -26,7 +26,7 @@ class LocationDecoratorSearchAdapter extends LocationSearchHitAdapter
 
 
     /**
-     * @var \Mousetic\Bundle\ContentDecoratorBundle\Decorator\ContentDecoratorFactory $contentDecoratorFactory
+     * @var \Truffo\eZContentDecoratorBundle\ContentDecoratorFactory $contentDecoratorFactory
      */
     private $contentDecoratorFactory;
 
@@ -65,7 +65,7 @@ class LocationDecoratorSearchAdapter extends LocationSearchHitAdapter
      * @param integer $offset The offset.
      * @param integer $length The length.
      *
-     * @return array|\Mousetic\Bundle\ContentDecoratorBundle\Decorator\ContentDecorator[]
+     * @return \Truffo\eZContentDecoratorBundle\Decorator\ContentDecorator[]
      */
     public function getSlice( $offset, $length )
     {

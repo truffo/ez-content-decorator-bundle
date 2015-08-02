@@ -20,15 +20,19 @@ class PreContentViewListener implements ContainerAwareInterface
     {
         $contentView = $event->getContentView();
 
-        /** @var \Mousetic\Bundle\ContentDecoratorBundle\Decorator\ContentDecoratorFactory $contentDecoratorFactory */
-        $contentDecoratorFactory = $this->container->get('contentdecorator.services.factory');
+        /** @var \Truffo\eZContentDecoratorBundle\Decorator\ContentDecoratorFactory $contentDecoratorFactory */
+        $contentDecoratorFactory = $this->container->get('ezcontentdecorator.services.factory');
 
-        /** @var \Mousetic\Bundle\ContentDecoratorBundle\Decorator\ContentDecorator $contentDecorator */
-        $contentDecorator = $contentDecoratorFactory->getContentDecorator($contentView->getParameter('location'));
-        $contentView->addParameters([
-            $contentDecorator->getContentTypeIdentifier() => $contentDecorator,
-            'decorator' => $contentDecorator
-        ]);
+        if ($contentView->hasParameter('location')) {
+            $location = $contentView->getParameter('location');
+            /** @var \Truffo\eZContentDecoratorBundle\Decorator\ContentDecorator $contentDecorator */
+            $contentDecorator = $contentDecoratorFactory->getContentDecorator($location);
+            $contentView->addParameters([
+                $contentDecorator->getContentTypeIdentifier() => $contentDecorator,
+                'decorator' => $contentDecorator
+            ]);
+        }
+
     }
 
     /**
