@@ -10,12 +10,18 @@ class PreContentViewListener implements ContainerAwareInterface
 {
     private $container;
 
+    /**
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
 
+    /**
+     * @param PreContentViewEvent $event
+     */
     public function onPreContentView( PreContentViewEvent $event )
     {
         $contentView = $event->getContentView();

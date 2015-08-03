@@ -36,6 +36,11 @@ class ContentDecorator implements ContainerAwareInterface
     protected $contentTypeIdentifier = null;
 
 
+    /**
+     * @param ContainerInterface $container
+     * @param Location $location
+     * @param $contentTypeIdentifier
+     */
     public function __construct(ContainerInterface $container, Location $location, $contentTypeIdentifier)
     {
 
@@ -46,12 +51,18 @@ class ContentDecorator implements ContainerAwareInterface
         $this->contentTypeIdentifier = $contentTypeIdentifier;
     }
 
+    /**
+     * @param ContainerInterface $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
         $this->repository = $this->container->get('ezpublish.api.repository');
     }
 
+    /**
+     * @return \eZ\Publish\API\Repository\Values\Content\Content
+     */
     public function getContent()
     {
         if ($this->content == null) {
@@ -61,6 +72,9 @@ class ContentDecorator implements ContainerAwareInterface
         return $this->content;
     }
 
+    /**
+     * @return Location
+     */
     public function getLocation()
     {
         return $this->location;

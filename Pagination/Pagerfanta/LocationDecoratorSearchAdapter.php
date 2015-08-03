@@ -35,6 +35,11 @@ class LocationDecoratorSearchAdapter extends LocationSearchHitAdapter
      */
     private $nbResults;
 
+    /**
+     * @param LocationQuery $query
+     * @param SearchService $searchService
+     * @param ContentDecoratorFactory $contentDecoratorFactory
+     */
     public function __construct( LocationQuery $query, SearchService $searchService, ContentDecoratorFactory $contentDecoratorFactory )
     {
         $this->query = $query;
@@ -79,6 +84,14 @@ class LocationDecoratorSearchAdapter extends LocationSearchHitAdapter
         return $list;
     }
 
+    /**
+     * @param LocationQuery $query
+     * @param SearchService $searchService
+     * @param ContentDecoratorFactory $contentDecoratorFactory
+     * @param $maxPerPage
+     * @param int $currentPage
+     * @return Pagerfanta
+     */
     public static function buildPager(LocationQuery $query, SearchService $searchService, ContentDecoratorFactory $contentDecoratorFactory, $maxPerPage, $currentPage = 1)
     {
         $pager = new Pagerfanta(

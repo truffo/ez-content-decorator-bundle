@@ -1,3 +1,0 @@
-e_z_content_decorator_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: eZContentDecoratorBundle:Default:index }
