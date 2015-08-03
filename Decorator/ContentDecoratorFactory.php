@@ -36,7 +36,7 @@ class ContentDecoratorFactory
         $this->defaultClassName = $this->configResolver->getParameter('default_class', 'ezcontentdecorator');
     }
 
-    public function getContentDecorator($location)
+    public function getContentDecorator(Location $location)
     {
         $mappingEntities = $this->configResolver->getParameter('class_mapping', 'ezcontentdecorator');
         $contentTypeIdentifier = $this->repository->getContentTypeService()
@@ -44,6 +44,12 @@ class ContentDecoratorFactory
         $className =  (array_key_exists($contentTypeIdentifier, $mappingEntities)) ?
             $mappingEntities[$contentTypeIdentifier] : $this->defaultClassName;
         return new $className($this->container, $location, $contentTypeIdentifier);
+    }
+    
+    public function getContentDecoratorByContent(Content $content)
+    {
+        $location = $this->repository->getLocationService()->loadLocation($content->contentInfo->mainLocationId);
+        return $this->getContentDecorator($location);
     }
 
 }
