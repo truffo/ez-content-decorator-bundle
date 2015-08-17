@@ -42,7 +42,7 @@ class LocationDecoratorSearchAdapter extends LocationSearchHitAdapter
      */
     public function __construct( LocationQuery $query, SearchService $searchService, ContentDecoratorFactory $contentDecoratorFactory )
     {
-        parent::__construct();
+        parent::__construct($query, $searchService);
         $this->query = $query;
         $this->searchService = $searchService;
         $this->contentDecoratorFactory = $contentDecoratorFactory;
